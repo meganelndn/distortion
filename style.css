@@ -33,9 +33,41 @@ h1::after {
   margin-left: 20px;
 }
 
-#gauge {
+#chart {
+  margin-top: 25%;
+}
+
+#chart p {
+  font-size: 70px;
+  margin: 0;
+}
+
+#chart p::before {
+  content: "⏳";
+}
+
+svg {
+  display: block;
+  margin-left: 40%;
+}
+
+.path2 {
+  stroke-dasharray: 1120;
+  animation: draw1 1s linear alternate;
+}
+
+@keyframes draw1 {
+  from {
+    stroke-dashoffset: 1120;
+  }
+  to {
+    stroke-dashoffset: 2240;
+  }
+}
+
+/* #gauge {
   width: 40%;
   height: auto;
   display: block;
   margin: 5% 30%;
-}
+} */
