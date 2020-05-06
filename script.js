@@ -4,15 +4,12 @@ document.addEventListener("DOMContentLoaded", init);
 const url = "https://kea-alt-del.dk/kata-distortion/";
 
 function init() {
-  console.log("one, two, three: ready");
   fetchData();
   fetchSVG();
 }
 
 function fetchSVG() {
-  fetch("svg/gauge.svg", {
-    method: "get",
-  })
+  fetch("svg/gauge.svg")
     .then((e) => e.text())
     .then((e) => {
       document.querySelector("#gauge").innerHTML = e;
@@ -32,10 +29,10 @@ function fetchData() {
 }
 
 function showData(data) {
-  const inQueue = data.inQueue;
+  /* const inQueue = data.inQueue;
   document
-    .querySelector("#speedometer")
-    .style.setProperty("--deg", inQueue * 6 + "deg");
+    .querySelector("#gauge")
+    .style.setProperty("45deg", inQueue * 6 + "deg");
   const bar = document.createElement("div");
   const pTag = document.createElement("p");
 
@@ -53,17 +50,18 @@ function showData(data) {
     pTag.style.color = "black";
   } else {
     bar.style.background = "red";
-  }
+  } */
 
-  document
-    .querySelector("#sidebar")
-    .insertBefore(bar, document.querySelector("#sidebar").firstChild);
-
+  // fetch real-time numbers to be displayed on page
   document.querySelector(
     "#info p+p"
   ).textContent = `Queue updated at: ${data.loggedAt.substring(11)}`;
 
-  document.querySelectorAll("#speeder > g:nth-child(1) text").forEach((t) => {
+  document.querySelector(
+    "#info p"
+  ).textContent = `Currently in queue: ${data.inQueue}`;
+
+  document.querySelectorAll("#gauge > g:nth-child(1) text").forEach((t) => {
     if (t.textContent === inQueue) {
       console.log(t.textContent);
 
