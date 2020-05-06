@@ -1,0 +1,27 @@
+h1,
+h3,
+p {
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  margin-top: 3%;
+}
+
+h1::before {
+  content: "🍻";
+  margin-right: 20px;
+}
+
+h1::after {
+  content: "🍻";
+  margin-left: 20px;
+}
+
+#gauge {
+  width: 40%;
+  height: auto;
+  display: block;
+  margin: 5% 30%;
+}
